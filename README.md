@@ -8,3 +8,7 @@ Small simplified Bot for fast integration.
 ## Reaction Role Feature
 
 Reaction Role Feature is pre written with custom Emoji
+
+## For Issues: 
+
+[![Build Status](https://img.shields.io/github/issues/le3ch-tech/cryptic-discord-bot?label=Issues)](https://github.com/le3ch-tech/cryptic-discord-bot/issues)
