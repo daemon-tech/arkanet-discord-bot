@@ -102,7 +102,7 @@ async def on_raw_reaction_add(payload):
                 member = payload.member
                 if member is not None:
                     await payload.member.add_roles(role)
-                    print("ARKANET: Member added") 
+                    print(f"ARKANET: Added {role} to {member}.") 
                 else:
                     print("ARKANET: DEBUG: member is null")
                     pass
@@ -122,7 +122,7 @@ async def on_raw_reaction_add(payload):
                 member = payload.member
                 if member is not None:
                     await payload.member.add_roles(role)
-                    print("ARKANET: Europe added")
+                    print(f"ARKANET: Added {role} to {member}.") 
                 else:
                     print("ARKANET: DEBUG: member is null")
                     pass
@@ -138,7 +138,7 @@ async def on_raw_reaction_add(payload):
                 member = payload.member
                 if member is not None:
                     await payload.member.add_roles(role)
-                    print("ARKANET: America added")           
+                    print(f"ARKANET: Added {role} to {member}.")            
                 else:
                     print("ARKANET: DEBUG: member is null")
                     pass
@@ -168,7 +168,7 @@ async def on_raw_reaction_add(payload):
          print("ARKANET: ERROR: No Statement")
          pass  
 
-
+#on_raw_reaction_remove remove role for Member; EUROPE; AMERICA; ASIA 
 @bot.event
 async def on_raw_reaction_remove(payload):
     guild = bot.get_guild(payload.guild_id)
@@ -185,9 +185,23 @@ async def on_raw_reaction_remove(payload):
                         print("ARKANET: DEBUG: role is null")
                 else:
                     print("ARKANET: ERROR: Unknown Emoji")
-            elif  payload.channel_id == 854826582639640626 and payload.message_id == 855973402459373579:
-                if str(payload.emoji) == "<:yes:855447870466555914>":
-                    role = get(guild.roles, name='Member')
+            elif  payload.channel_id == 855963293997989888 and payload.message_id == 855973402459373579:
+                if str(payload.emoji) == "<:europeanunionflag:855972418915663912>":
+                    role = get(guild.roles, name='Europe')
+                    if role is not None:
+                        await member.remove_roles(role)
+                        print(f"Removed {role} from {member}.")
+                    else:
+                        print("ARKANET: DEBUG: role is null")
+                elif str(payload.emoji) == "<:america:855972648109735936>":
+                    role = get(guild.roles, name='America')
+                    if role is not None:
+                        await member.remove_roles(role)
+                        print(f"Removed {role} from {member}.")
+                    else:
+                        print("ARKANET: DEBUG: role is null")
+                elif str(payload.emoji) == "<:asia:855966897349722122>":
+                    role = get(guild.roles, name='Asia')
                     if role is not None:
                         await member.remove_roles(role)
                         print(f"Removed {role} from {member}.")
