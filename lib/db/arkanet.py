@@ -18,12 +18,12 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 
 intents = Intents.all()
 activity = discord.Activity(name='TCP', type=discord.ActivityType.watching)
-bot = Bot(command_prefix='sudo', intents=intents, activity=activity)
+bot = Bot(command_prefix="$", intents=intents, activity=activity)
 client = discord.Client(intents=intents)
 channel_sudo = client.get_channel(856434834900254731)
 
 print("ARKANET: Configuration loaded")
-#-----------------------------------------------------------------------------------------
+#----------------------------------NOTES-------------------------------------------
 
 # TODO: connecting syntax on all on_message(message) with elif      CHECK
 # TODO: connect all on_raw_reaction_add(payload) with elif               CHECK
@@ -35,13 +35,26 @@ print("ARKANET: Configuration loaded")
 # TODO: Make a channel for bot command prompt. prompt every action there.
 # TODO: Add print {username} of who added role                              CHECK
 
-#-----------------------------------------------------------------------------------------
+'''
+if su -> notice help argument -help
+if su -help -> show syntax and directorys
+if su dir ->show current dir
+if su cd -> go to dir
+if su echo $argument -> tell what he/shesays
+tree -> 
+'''
 
 print("ARKANET: Awaiting Action")
-
+#--------------------------------Context----------------------------------------------
 #Listen to messages
 @bot.event
+async def on_ready():
+    channel_sudo = bot.get_channel(856434834900254731)
+    await channel_sudo.send(f"ARKANET: Successfully Booted")
+
+@bot.event
 async def on_message(message):
+    channel_sudo = bot.get_channel(856434834900254731)
     if message.channel.id == 854826582639640626:
         if message.content.startswith('Roles'):
             embedvar = discord.Embed(title="React to this Emoji!",
@@ -79,6 +92,29 @@ async def on_message(message):
             print("ARKANET: Updated!")
         else:
             print("ARKANET: ERROR: wrong context")
+            pass
+    elif message.channel.id == 856434834900254731:
+        if message.content == "su help":
+            embedhelp = discord.Embed(title ='ARKANET $ ~su help',
+                                      description = "Comands  |  'cmd list'\n"
+                                                            "Filesystemm  |  'ls -a '\n"
+                                                            "Reboot  |  'self reboot'",  color=0x00ff00)
+            await channel_sudo.send(embed=embedhelp)
+            
+        elif message.content == "su cmd list":
+            embedcmd = discord.Embed(title ='ARKANET $ ~su cmd list',
+                                     description = "🔍 IP WHOIS | whois [ip]", color=0x00ff00)
+            await channel_sudo.send(embed=embedcmd)
+           
+        elif message.content == "su self reboot":
+            print("ARKANET: REBOOTING")
+            await channel_sudo.send(f"ARKANET: REBOOTING")
+            os.system("python3 reboot.py")
+            
+        elif message.content.startswith('su'):
+            await channel_sudo.send(f"ARKANET: ~ su [argument1] example: help")
+            
+        else:
             pass
     else:
         pass
@@ -169,6 +205,7 @@ async def on_raw_reaction_add(payload):
             pass    
     else:
          print("ARKANET: ERROR: No Statement")
+         await channel_sudo.send(f"ARKANET: ERROR: No Statement")
          pass  
 
 #on_raw_reaction_remove remove role for Member; EUROPE; AMERICA; ASIA 
@@ -223,7 +260,6 @@ async def on_raw_reaction_remove(payload):
             print("ARKANET: DEBUG member is null")
     else:
         print("ARKANET: DEBUG: guild is null")
-        
+#--------------------------------START-----------------------------------------------        
 
-#await payload.member.remove_roles(role)
 bot.run(TOKEN)
