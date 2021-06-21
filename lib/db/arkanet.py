@@ -12,38 +12,34 @@ from discord.ext.commands import Bot
 
 from extensions.clear import clear_
 
-print("ARKANET: BOOTING: Done!")
 clear_()
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 intents = Intents.all()
-bot = Bot(command_prefix='sudo', intents=intents)
+activity = discord.Activity(name='TCP', type=discord.ActivityType.watching)
+bot = Bot(command_prefix='sudo', intents=intents, activity=activity)
 client = discord.Client(intents=intents)
+channel_sudo = client.get_channel(856434834900254731)
 
+print("ARKANET: Configuration loaded")
 #-----------------------------------------------------------------------------------------
 
 # TODO: connecting syntax on all on_message(message) with elif      CHECK
-# TODO: connect all on_raw_reaction_add(payload) with elif          CHECK
-# TODO: Fix Add roles with Elif after if channel...                 CHECK
-# TODO: on_raw_reaction_remove(payload) for all reaction roles
+# TODO: connect all on_raw_reaction_add(payload) with elif               CHECK
+# TODO: Fix Add roles with Elif after if channel...                                  CHECK
+# TODO: on_raw_reaction_remove(payload) for all reaction roles        CHECK
 # TODO: make a auto !d bump for disboard bot every 2 hours
 # TODO: su flag {flag - ctf} if input = variable ctf then add role
 # TODO: Bot description: Plays Araknet reading TCP
 # TODO: Make a channel for bot command prompt. prompt every action there.
-# TODO: Add print {username} of who added role 
+# TODO: Add print {username} of who added role                              CHECK
 
 #-----------------------------------------------------------------------------------------
 
 print("ARKANET: Awaiting Action")
 
-#Await $Hello -> Test message
-@bot.command()
-async def Hello(ctx):
-    print("ARKANET: Hello got called")
-    await ctx.send("Hello! 👋")
-
-#Send Embed Message in Channel Roles
+#Listen to messages
 @bot.event
 async def on_message(message):
     if message.channel.id == 854826582639640626:
@@ -85,13 +81,12 @@ async def on_message(message):
             print("ARKANET: ERROR: wrong context")
             pass
     else:
-        print("ARKANET: ERROR: wrong channel id")
         pass
-    
     
 #on_raw_reaction_add add role for Member; EUROPE; AMERICA; ASIA 
 @bot.event
 async def on_raw_reaction_add(payload):
+    channel_sudo = bot.get_channel(856434834900254731)
     if payload.channel_id == 854826582639640626 and payload.message_id == 855579785408938002:
         if str(payload.emoji) == "<:yes:855447870466555914>":
             message_id = payload.message_id
@@ -102,15 +97,20 @@ async def on_raw_reaction_add(payload):
                 member = payload.member
                 if member is not None:
                     await payload.member.add_roles(role)
-                    print(f"ARKANET: Added {role} to {member}.") 
+                    await channel_sudo.send(f"ARKANET: Added {role} to {member}.")
+                    print(f"ARKANET: Added {role} to {member}.")
+                    
                 else:
                     print("ARKANET: DEBUG: member is null")
+                    await channel_sudo.send(f"ARKANET: DEBUG: member is null")
                     pass
             else:
                 print("ARKANET: DEBUG: role is null")
+                await channel_sudo.send(f"ARKANET: DEBUG: role is null")
                 pass
         else:
             print("ARKANET: DEBUG: not yes emoji")
+            await channel_sudo.send(f"ARKANET: DEBUG: not yes emoji")
             pass           
     elif  payload.channel_id == 855963293997989888 and payload.message_id == 855973402459373579:              
         if str(payload.emoji) == "<:europeanunionflag:855972418915663912>":
@@ -122,7 +122,8 @@ async def on_raw_reaction_add(payload):
                 member = payload.member
                 if member is not None:
                     await payload.member.add_roles(role)
-                    print(f"ARKANET: Added {role} to {member}.") 
+                    print(f"ARKANET: Added {role} to {member}.")
+                    await channel_sudo.send(f"ARKANET: Added {role} to {member}.") 
                 else:
                     print("ARKANET: DEBUG: member is null")
                     pass
@@ -138,7 +139,8 @@ async def on_raw_reaction_add(payload):
                 member = payload.member
                 if member is not None:
                     await payload.member.add_roles(role)
-                    print(f"ARKANET: Added {role} to {member}.")            
+                    print(f"ARKANET: Added {role} to {member}.")
+                    await channel_sudo.send(f"ARKANET: Added {role} to {member}.")            
                 else:
                     print("ARKANET: DEBUG: member is null")
                     pass
@@ -155,6 +157,7 @@ async def on_raw_reaction_add(payload):
                 if member is not None:
                     await payload.member.add_roles(role)
                     print(f"Added {role} to {member}.")
+                    await channel_sudo.send(f"ARKANET: Added {role} to {member}.")
                 else:
                     print("ARKANET: DEBUG: member is null")
                     pass
@@ -171,6 +174,7 @@ async def on_raw_reaction_add(payload):
 #on_raw_reaction_remove remove role for Member; EUROPE; AMERICA; ASIA 
 @bot.event
 async def on_raw_reaction_remove(payload):
+    channel_sudo = bot.get_channel(856434834900254731)
     guild = bot.get_guild(payload.guild_id)
     if guild is not None:
         member = get(guild.members, id=payload.user_id)
@@ -181,6 +185,7 @@ async def on_raw_reaction_remove(payload):
                     if role is not None:
                         await member.remove_roles(role)
                         print(f"Removed {role} from {member}.")
+                        await channel_sudo.send(f"ARKANET: Removed {role} from {member}.")
                     else:
                         print("ARKANET: DEBUG: role is null")
                 else:
@@ -191,6 +196,7 @@ async def on_raw_reaction_remove(payload):
                     if role is not None:
                         await member.remove_roles(role)
                         print(f"Removed {role} from {member}.")
+                        await channel_sudo.send(f"ARKANET: Removed {role} from {member}.")
                     else:
                         print("ARKANET: DEBUG: role is null")
                 elif str(payload.emoji) == "<:america:855972648109735936>":
@@ -198,6 +204,7 @@ async def on_raw_reaction_remove(payload):
                     if role is not None:
                         await member.remove_roles(role)
                         print(f"Removed {role} from {member}.")
+                        await channel_sudo.send(f"ARKANET: Removed {role} from {member}.")
                     else:
                         print("ARKANET: DEBUG: role is null")
                 elif str(payload.emoji) == "<:asia:855966897349722122>":
@@ -205,6 +212,7 @@ async def on_raw_reaction_remove(payload):
                     if role is not None:
                         await member.remove_roles(role)
                         print(f"Removed {role} from {member}.")
+                        await channel_sudo.send(f"ARKANET: Removed {role} from {member}.")
                     else:
                         print("ARKANET: DEBUG: role is null")
                 else:
