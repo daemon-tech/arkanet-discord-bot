@@ -30,6 +30,8 @@ client = discord.Client(intents=intents)
 # TODO: make a auto !d bump for disboard bot every 2 hours
 # TODO: su flag {flag - ctf} if input = variable ctf then add role
 # TODO: Bot description: Plays Araknet reading TCP
+# TODO: Make a channel for bot command prompt. prompt every action there.
+# TODO: Add print {username} of who added role 
 
 #-----------------------------------------------------------------------------------------
 
@@ -171,11 +173,19 @@ async def on_raw_reaction_add(payload):
 async def on_raw_reaction_remove(payload):
     guild = bot.get_guild(payload.guild_id)
     if guild is not None:
-        print("ARKANET: DEBUG: guild is not Null")
         member = get(guild.members, id=payload.user_id)
         if member is not None:
-            print("ARKANET: DEBUG: member is not None")
             if payload.channel_id == 854826582639640626 and payload.message_id == 855579785408938002:
+                if str(payload.emoji) == "<:yes:855447870466555914>":
+                    role = get(guild.roles, name='Member')
+                    if role is not None:
+                        await member.remove_roles(role)
+                        print(f"Removed {role} from {member}.")
+                    else:
+                        print("ARKANET: DEBUG: role is null")
+                else:
+                    print("ARKANET: ERROR: Unknown Emoji")
+            elif  payload.channel_id == 854826582639640626 and payload.message_id == 855973402459373579:
                 if str(payload.emoji) == "<:yes:855447870466555914>":
                     role = get(guild.roles, name='Member')
                     if role is not None:
@@ -191,34 +201,7 @@ async def on_raw_reaction_remove(payload):
             print("ARKANET: DEBUG member is null")
     else:
         print("ARKANET: DEBUG: guild is null")
-
-
-'''@bot.event
-async def on_raw_reaction_remove(payload):
-    if payload.channel_id == 854826582639640626 and payload.message_id == 855579785408938002:
-        if str(payload.emoji) == "<:yes:855447870466555914>":
-            message_id = payload.message_id
-            guild_id = payload.guild_id
-            guild = client.get_guild(guild_id) 
-            role = get(payload.member.guild.roles, name='Member')
-            if role is not None:
-                member = payload.member
-                if member is not None:
-                    await payload.member.remove_roles(role)
-                    print(f"Removed {role} from {member}.")'''
-                    
-'''if payload.channel_id == 854826582639640626 and payload.message_id == 855579785408938002:
-        if str(payload.emoji) == "<:yes:855447870466555914>":
-            guild = bot.get_guild(payload.guild_id)
-            role = get(guild.roles, name='Member')
-            if role is not None:
-                print("DEBUG: role is not None")
-                member = guild.get_member(payload.user_id)
-                if member is not None:
-                    print("DEBUG: member is not None")
-                    await payload.member.remove_roles(role)
-                    print(f"Removed {role} from {member}.")'''
-
+        
 
 #await payload.member.remove_roles(role)
 bot.run(TOKEN)
