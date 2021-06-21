@@ -5,7 +5,7 @@ def load_modules():
     print("Modules: Loaded")
     
 def bot():
-    system("python3 lib/db/bot.py")
+    system("python3 lib/db/arkanet.py")
 
 if __name__ == "__main__":
     load_modules()
