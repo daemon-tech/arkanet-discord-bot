@@ -169,7 +169,7 @@ async def on_raw_reaction_add(payload):
 
 @bot.event
 async def on_raw_reaction_remove(payload):
-    guild = client.get_guild(payload.guild_id)
+    guild = bot.get_guild(payload.guild_id)
     if guild is not None:
         print("ARKANET: DEBUG: guild is not Null")
         member = get(guild.members, id=payload.user_id)
