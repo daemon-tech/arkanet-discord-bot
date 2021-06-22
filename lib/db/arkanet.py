@@ -75,9 +75,6 @@ async def on_message(message):
             msg = await channel.fetch_message(855973402459373579)
             await msg.edit(embed=embedvar2)
             print("ARKANET: Updated!")
-        else:
-            print("ARKANET: ERROR: wrong context")
-            pass
         #role message
         elif message.content.startswith('$su roles custom'):
             await message.channel.send("Click on the corresponding emoji to receive your role. \n"
@@ -86,6 +83,8 @@ async def on_message(message):
                                         "<:3225_kali:855904540154134539> - Kali Linux"
                                         "<:java:855966141092331530> - Java")
             await.channel_sudo.send("ARKANET: display su roles custom in channel <855963293997989888>")
+        else:
+            print("ARKANET: DEBUG: Wrong Context"
                 
     elif message.channel.id == 856434834900254731:
         if message.content == "su help":
