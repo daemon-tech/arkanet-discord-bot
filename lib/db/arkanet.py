@@ -82,7 +82,7 @@ async def on_message(message):
                                         "<:exe:855966140717989899> - Script Kiddie"
                                         "<:3225_kali:855904540154134539> - Kali Linux"
                                         "<:java:855966141092331530> - Java")
-            await.channel_sudo.send("ARKANET: display su roles custom in channel <855963293997989888>")
+            await channel_sudo.send("ARKANET: display su roles custom in channel <855963293997989888>")
         else:
             print("ARKANET: DEBUG: Wrong Context"
                 
