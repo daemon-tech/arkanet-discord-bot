@@ -12,6 +12,7 @@ from discord.ext.commands import Bot
 
 from extensions.clear import clear_
 
+
 clear_()
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -37,7 +38,7 @@ async def on_message(message):
     channel_sudo = bot.get_channel(856434834900254731)
     #member reaction embed
     if message.channel.id == 854826582639640626:
-        if message.content.startswith('Roles'):
+        if message.content.startswith('$Roles'):
             embedvar = discord.Embed(title="React to this Emoji!",
                                      description="Click the corresponding emoji to accept the rules.\n<:yes:855447870466555914> "
                                                     "- Member", color=0x00ff00)
@@ -64,7 +65,7 @@ async def on_message(message):
             await message.channel.send(embed=embedvar)
             print("Changed message embed color.")
         #self fole continental update    
-        elif message.content.startswith('refresh'):
+        elif message.content.startswith('$refresh'):
             embedvar2 = discord.Embed(title="React to this message to get your roles!",
                                      description="Click the corresponding emoji to receive your role.\n<:europeanunionflag:855972418915663912> "
                                                     "- Europe\n<:america:855972648109735936> "
@@ -77,16 +78,14 @@ async def on_message(message):
         else:
             print("ARKANET: ERROR: wrong context")
             pass
-        
-    elif message.channel.id == 855963293997989888:
-        if message.content.startswith('$rolemenu'):
-            embedvar = discord.Embed(title="React to this message to get your roles!",
-                                     description="Click the corresponding emoji to receive your role.\n<:europeanunionflag:855972418915663912>"
-                                                    "- Europe\n<:america:855972648109735936> "
-                                                    "- America\n<:asia:855966897349722122> "
-                                                    "- Asia", color=0x00ff00)
-            await message.channel.send(embed=embedvar)
-            print("Changed message embed color.")
+        #role message
+        elif message.content.startswith('$su roles custom'):
+            await message.channel.send("Click on the corresponding emoji to receive your role. \n"
+                                        "<:python:855966141083680798> - Python"
+                                        "<:exe:855966140717989899> - Script Kiddie"
+                                        "<:3225_kali:855904540154134539> - Kali Linux"
+                                        "<:java:855966141092331530> - Java")
+            await.channel_sudo.send("ARKANET: display su roles custom in channel <855963293997989888>")
                 
     elif message.channel.id == 856434834900254731:
         if message.content == "su help":
