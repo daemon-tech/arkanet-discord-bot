@@ -84,8 +84,8 @@ async def on_message(message):
                                         "<:java:855966141092331530> - Java")
             await channel_sudo.send("ARKANET: display su roles custom in channel <855963293997989888>")
         else:
-            print("ARKANET: DEBUG: Wrong Context"
-                
+            print("ARKANET: DEBUG: Wrong Context")
+            
     elif message.channel.id == 856434834900254731:
         if message.content == "su help":
             embedhelp = discord.Embed(title ='ARKANET $ ~su help',
