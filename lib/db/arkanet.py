@@ -23,38 +23,19 @@ client = discord.Client(intents=intents)
 channel_sudo = client.get_channel(856434834900254731)
 
 print("ARKANET: Configuration loaded")
-#----------------------------------NOTES-------------------------------------------
-
-# TODO: connecting syntax on all on_message(message) with elif      CHECK
-# TODO: connect all on_raw_reaction_add(payload) with elif               CHECK
-# TODO: Fix Add roles with Elif after if channel...                                  CHECK
-# TODO: on_raw_reaction_remove(payload) for all reaction roles        CHECK
-# TODO: make a auto !d bump for disboard bot every 2 hours
-# TODO: su flag {flag - ctf} if input = variable ctf then add role
-# TODO: Bot description: Plays Araknet reading TCP
-# TODO: Make a channel for bot command prompt. prompt every action there.
-# TODO: Add print {username} of who added role                              CHECK
-
-'''
-if su -> notice help argument -help
-if su -help -> show syntax and directorys
-if su dir ->show current dir
-if su cd -> go to dir
-if su echo $argument -> tell what he/shesays
-tree -> 
-'''
-
 print("ARKANET: Awaiting Action")
-#--------------------------------Context----------------------------------------------
-#Listen to messages
+
+#listener on on_ready
 @bot.event
 async def on_ready():
     channel_sudo = bot.get_channel(856434834900254731)
     await channel_sudo.send(f"ARKANET: Successfully Booted")
 
+#listener on_message
 @bot.event
 async def on_message(message):
     channel_sudo = bot.get_channel(856434834900254731)
+    #member reaction embed
     if message.channel.id == 854826582639640626:
         if message.content.startswith('Roles'):
             embedvar = discord.Embed(title="React to this Emoji!",
@@ -62,6 +43,7 @@ async def on_message(message):
                                                     "- Member", color=0x00ff00)
             await message.channel.send(embed=embedvar)
             print("Changed message embed color.")
+        #member reaction embed update    
         elif message.content.startswith('update'):
             embedvar2 = discord.Embed(title="React to this Emoji!",
                                       description="Click the corresponding emoji to accept the rules. \n<:yes:855447870466555914> "
@@ -71,6 +53,7 @@ async def on_message(message):
             await msg.edit(embed=embedvar2)
             print("Updated: Embed Role Message")
             await message.channel.send("Updated: Embed Role Message")
+    #self role continetal         
     elif message.channel.id == 855963293997989888:
         if message.content.startswith('$rolemenu'):
             embedvar = discord.Embed(title="React to this message to get your roles!",
@@ -80,6 +63,7 @@ async def on_message(message):
                                                     "- Asia", color=0x00ff00)
             await message.channel.send(embed=embedvar)
             print("Changed message embed color.")
+        #self fole continental update    
         elif message.content.startswith('refresh'):
             embedvar2 = discord.Embed(title="React to this message to get your roles!",
                                      description="Click the corresponding emoji to receive your role.\n<:europeanunionflag:855972418915663912> "
@@ -93,12 +77,23 @@ async def on_message(message):
         else:
             print("ARKANET: ERROR: wrong context")
             pass
+        
+    elif message.channel.id == 855963293997989888:
+        if message.content.startswith('$rolemenu'):
+            embedvar = discord.Embed(title="React to this message to get your roles!",
+                                     description="Click the corresponding emoji to receive your role.\n<:europeanunionflag:855972418915663912>"
+                                                    "- Europe\n<:america:855972648109735936> "
+                                                    "- America\n<:asia:855966897349722122> "
+                                                    "- Asia", color=0x00ff00)
+            await message.channel.send(embed=embedvar)
+            print("Changed message embed color.")
+                
     elif message.channel.id == 856434834900254731:
         if message.content == "su help":
             embedhelp = discord.Embed(title ='ARKANET $ ~su help',
-                                      description = "Comands  |  'cmd list'\n"
-                                                            "Filesystemm  |  'ls -a '\n"
-                                                            "Reboot  |  'self reboot'",  color=0x00ff00)
+                                      description = "🔍COMMANDS  |  'cmd list'\n"
+                                                            "📁 FILESYSTEM  |  'ls -a '\n"
+                                                            "♻️ REBOOT  |  'self reboot'",  color=0x00ff00)
             await channel_sudo.send(embed=embedhelp)
             
         elif message.content == "su cmd list":
@@ -112,14 +107,14 @@ async def on_message(message):
             os.system("python3 reboot.py")
             
         elif message.content.startswith('su'):
-            await channel_sudo.send(f"ARKANET: ~ su [argument1] example: help")
+            await channel_sudo.send(f"ARKANET: ~ su [arg1] example: help")
             
         else:
             pass
     else:
         pass
     
-#on_raw_reaction_add add role for Member; EUROPE; AMERICA; ASIA 
+#on_raw_reaction_add 
 @bot.event
 async def on_raw_reaction_add(payload):
     channel_sudo = bot.get_channel(856434834900254731)
@@ -208,7 +203,7 @@ async def on_raw_reaction_add(payload):
          await channel_sudo.send(f"ARKANET: ERROR: No Statement")
          pass  
 
-#on_raw_reaction_remove remove role for Member; EUROPE; AMERICA; ASIA 
+#on_raw_reaction_remove 
 @bot.event
 async def on_raw_reaction_remove(payload):
     channel_sudo = bot.get_channel(856434834900254731)
@@ -259,7 +254,6 @@ async def on_raw_reaction_remove(payload):
         else:
             print("ARKANET: DEBUG member is null")
     else:
-        print("ARKANET: DEBUG: guild is null")
-#--------------------------------START-----------------------------------------------        
+        print("ARKANET: DEBUG: guild is null")       
 
 bot.run(TOKEN)
