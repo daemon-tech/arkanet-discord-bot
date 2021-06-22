@@ -54,6 +54,7 @@ async def on_message(message):
             await msg.edit(embed=embedvar2)
             print("Updated: Embed Role Message")
             await message.channel.send("Updated: Embed Role Message")
+            
     #self role continetal         
     elif message.channel.id == 855963293997989888:
         if message.content.startswith('$rolemenu'):
@@ -78,13 +79,13 @@ async def on_message(message):
         #role message
         elif message.content.startswith('$su roles custom'):
             await message.channel.send("Click on the corresponding emoji to receive your role. \n"
-                                        "<:python:855966141083680798> - Python"
-                                        "<:exe:855966140717989899> - Script Kiddie"
-                                        "<:3225_kali:855904540154134539> - Kali Linux"
+                                        "<:python:855966141083680798> - Python \n"
+                                        "<:exe:855966140717989899> - Script Kiddie \n"
+                                        "<:3225_kali:855904540154134539> - Kali Linux \n"
                                         "<:java:855966141092331530> - Java")
             await channel_sudo.send("ARKANET: display su roles custom in channel <855963293997989888>")
         else:
-            print("ARKANET: DEBUG: Wrong Context")
+            pass
             
     elif message.channel.id == 856434834900254731:
         if message.content == "su help":
@@ -110,7 +111,7 @@ async def on_message(message):
         else:
             pass
     else:
-        pass
+        await channel_sudo.send(f"ARKANET: {message.author.name}: {message.content}")
     
 #on_raw_reaction_add 
 @bot.event
@@ -140,7 +141,80 @@ async def on_raw_reaction_add(payload):
         else:
             print("ARKANET: DEBUG: not yes emoji")
             await channel_sudo.send(f"ARKANET: DEBUG: not yes emoji")
-            pass           
+            pass
+
+    elif payload.channel_id == 855963293997989888 and payload.message_id == 856846182969376788:
+        if str(payload.emoji) == "<:python:855966141083680798>":
+            message_id = payload.message_id
+            guild_id = payload.guild_id
+            guild = client.get_guild(guild_id) 
+            role = get(payload.member.guild.roles, name='Python')
+            if role is not None:
+                member = payload.member
+                if member is not None:
+                    await payload.member.add_roles(role)
+                    print(f"ARKANET: Added {role} to {member}.")
+                    await channel_sudo.send(f"ARKANET: Added {role} to {member}.") 
+                else:
+                    print("ARKANET: DEBUG: member is null")
+                    pass
+            else:
+                print("ARKANET: DEBUG: role is null")
+                pass
+        elif str(payload.emoji) == "<:exe:855966140717989899>":
+            message_id = payload.message_id
+            guild_id = payload.guild_id
+            guild = client.get_guild(guild_id) 
+            role = get(payload.member.guild.roles, name='Script Kiddie')
+            if role is not None:
+                member = payload.member
+                if member is not None:
+                    await payload.member.add_roles(role)
+                    print(f"ARKANET: Added {role} to {member}.")
+                    await channel_sudo.send(f"ARKANET: Added {role} to {member}.") 
+                else:
+                    print("ARKANET: DEBUG: member is null")
+                    pass
+            else:
+                print("ARKANET: DEBUG: role is null")
+                pass
+        elif str(payload.emoji) == "<:3225_kali:855904540154134539>":
+            message_id = payload.message_id
+            guild_id = payload.guild_id
+            guild = client.get_guild(guild_id) 
+            role = get(payload.member.guild.roles, name='Kali Linux')
+            if role is not None:
+                member = payload.member
+                if member is not None:
+                    await payload.member.add_roles(role)
+                    print(f"ARKANET: Added {role} to {member}.")
+                    await channel_sudo.send(f"ARKANET: Added {role} to {member}.") 
+                else:
+                    print("ARKANET: DEBUG: member is null")
+                    pass
+            else:
+                print("ARKANET: DEBUG: role is null")
+                pass
+        elif str(payload.emoji) == "<:java:855966141092331530>":
+            message_id = payload.message_id
+            guild_id = payload.guild_id
+            guild = client.get_guild(guild_id) 
+            role = get(payload.member.guild.roles, name='Java')
+            if role is not None:
+                member = payload.member
+                if member is not None:
+                    await payload.member.add_roles(role)
+                    print(f"ARKANET: Added {role} to {member}.")
+                    await channel_sudo.send(f"ARKANET: Added {role} to {member}.") 
+                else:
+                    print("ARKANET: DEBUG: member is null")
+                    pass
+            else:
+                print("ARKANET: DEBUG: role is null")
+                pass
+        else:
+            pass
+          
     elif  payload.channel_id == 855963293997989888 and payload.message_id == 855973402459373579:              
         if str(payload.emoji) == "<:europeanunionflag:855972418915663912>":
             message_id = payload.message_id
@@ -220,6 +294,43 @@ async def on_raw_reaction_remove(payload):
                         print("ARKANET: DEBUG: role is null")
                 else:
                     print("ARKANET: ERROR: Unknown Emoji")
+            
+            #coding roles  
+            elif payload.channel_id == 855963293997989888 and payload.message_id == 856846182969376788:
+                if str(payload.emoji) == "<:python:855966141083680798>":
+                    role = get(guild.roles, name='Python')
+                    if role is not None:
+                        await member.remove_roles(role)
+                        print(f"Removed {role} from {member}.")
+                        await channel_sudo.send(f"ARKANET: Removed {role} from {member}.")
+                    else:
+                        print("ARKANET: DEBUG: role is null")
+                elif str(payload.emoji) == "<:exe:855966140717989899>":
+                    role = get(guild.roles, name='Script Kiddie')
+                    if role is not None:
+                        await member.remove_roles(role)
+                        print(f"Removed {role} from {member}.")
+                        await channel_sudo.send(f"ARKANET: Removed {role} from {member}.")
+                    else:
+                        print("ARKANET: DEBUG: role is null")
+                elif str(payload.emoji) == "<:3225_kali:855904540154134539>":
+                    role = get(guild.roles, name='kali Linux')
+                    if role is not None:
+                        await member.remove_roles(role)
+                        print(f"Removed {role} from {member}.")
+                        await channel_sudo.send(f"ARKANET: Removed {role} from {member}.")
+                    else:
+                        print("ARKANET: DEBUG: role is null")
+                elif str(payload.emoji) == "<:java:855966141092331530>":
+                    role = get(guild.roles, name='Java')
+                    if role is not None:
+                        await member.remove_roles(role)
+                        print(f"Removed {role} from {member}.")
+                        await channel_sudo.send(f"ARKANET: Removed {role} from {member}.")
+                    else:
+                        print("ARKANET: DEBUG: role is null")
+                
+            #Continental roles                
             elif  payload.channel_id == 855963293997989888 and payload.message_id == 855973402459373579:
                 if str(payload.emoji) == "<:europeanunionflag:855972418915663912>":
                     role = get(guild.roles, name='Europe')
