@@ -112,7 +112,8 @@ async def on_message(message):
             pass
     else:
         if message.channel.id != 856434834900254731:
-            await channel_sudo.send(f"ARKANET: {message.author.name}: {message.content}")
+        	if message.channel.id != 856434834900254731:
+            		await channel_sudo.send(f"ARKANET: {message.author.name}: {message.content}")
     
 #on_raw_reaction_add 
 @bot.event

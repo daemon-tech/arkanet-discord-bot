@@ -1,0 +1,179 @@
+nohup: bot.py: No such file or directory
+Traceback (most recent call last):
+  File "/home/lupin/.local/lib/python3.8/site-packages/discord/http.py", line 300, in static_login
+    data = await self.request(Route('GET', '/users/@me'))
+  File "/home/lupin/.local/lib/python3.8/site-packages/discord/http.py", line 254, in request
+    raise HTTPException(r, data)
+discord.errors.HTTPException: 401 Unauthorized (error code: 0): 401: Unauthorized
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "bot.py", line 141, in <module>
+    bot.run(TOKEN)
+  File "/home/lupin/.local/lib/python3.8/site-packages/discord/client.py", line 723, in run
+    return future.result()
+  File "/home/lupin/.local/lib/python3.8/site-packages/discord/client.py", line 702, in runner
+    await self.start(*args, **kwargs)
+  File "/home/lupin/.local/lib/python3.8/site-packages/discord/client.py", line 665, in start
+    await self.login(*args, bot=bot)
+  File "/home/lupin/.local/lib/python3.8/site-packages/discord/client.py", line 511, in login
+    await self.http.static_login(token.strip(), bot=bot)
+  File "/home/lupin/.local/lib/python3.8/site-packages/discord/http.py", line 304, in static_login
+    raise LoginFailure('Improper token has been passed.') from exc
+discord.errors.LoginFailure: Improper token has been passed.
+nohup: bot.py: No such file or directory
+Member added
+Europe added
+Europe added
+Europe added
+Member added
+Member added
+Member added
+Europe added
+Europe added
+Member added
+Member added
+Member added
+Member added
+Europe added
+Member added
+Member added
+nohup: arkanet: No such file or directory
+nohup: arkanet.py: No such file or directory
+nohup: arkanet.py: No such file or directory
+[H[2JARKANET: Configuration loaded
+ARKANET: Awaiting Action
+[H[2J[H[2J[H[2J[H[2J[H[2JARKANET: Configuration loaded
+ARKANET: Awaiting Action
+ARKANET: Configuration loaded
+ARKANET: Awaiting Action
+ARKANET: Configuration loaded
+ARKANET: Awaiting Action
+ARKANET: Added Script Kiddie to DawoodInDaHood#6666.
+Removed Script Kiddie from DawoodInDaHood#6666.
+ARKANET: Added Python to DawoodInDaHood#6666.
+ARKANET: Added Script Kiddie to DawoodInDaHood#6666.
+Removed Script Kiddie from DawoodInDaHood#6666.
+ARKANET: Added Kali Linux to DawoodInDaHood#6666.
+Removed Member from anunrar#7798.
+ARKANET: Added Member to anunrar#7798.
+Removed Member from anunrar#7798.
+Removed Member from anunrar#7798.
+ARKANET: Added Member to anunrar#7798.
+ARKANET: Added Member to anunrar#7798.
+ARKANET: Added Member to not jommy#1636.
+ARKANET: ERROR: No Statement
+ARKANET: ERROR: Unknown Channel
+Removed Member from not jommy#1636.
+ARKANET: Added Member to not jommy#1636.
+ARKANET: Added Member to OutDeMudd#9406.
+ARKANET: Added America to OutDeMudd#9406.
+ARKANET: Added Member to Layth#2146.
+ARKANET: Added Python to Layth#2146.
+ARKANET: Added Script Kiddie to Layth#2146.
+ARKANET: Added Kali Linux to Layth#2146.
+ARKANET: Added Java to Layth#2146.
+ARKANET: Added Europe to Layth#2146.
+ARKANET: Added America to Layth#2146.
+Added Asia to Layth#2146.
+ARKANET: Added Member to Nav2gateWasTaken#6104.
+ARKANET: ERROR: No Statement
+ARKANET: Added Member to m&ms#1370.
+ARKANET: REBOOTING
+ARKANET: Configuration loaded
+ARKANET: Awaiting Action
+ARKANET: Added Script Kiddie to DawoodInDaHood#6666.
+Removed Script Kiddie from DawoodInDaHood#6666.
+ARKANET: Added Python to DawoodInDaHood#6666.
+ARKANET: Added Script Kiddie to DawoodInDaHood#6666.
+Removed Script Kiddie from DawoodInDaHood#6666.
+ARKANET: Added Kali Linux to DawoodInDaHood#6666.
+Removed Member from anunrar#7798.
+ARKANET: Added Member to anunrar#7798.
+Removed Member from anunrar#7798.
+Removed Member from anunrar#7798.
+ARKANET: Added Member to anunrar#7798.
+ARKANET: Added Member to anunrar#7798.
+ARKANET: Added Member to not jommy#1636.
+ARKANET: ERROR: No Statement
+ARKANET: ERROR: Unknown Channel
+Removed Member from not jommy#1636.
+ARKANET: Added Member to not jommy#1636.
+ARKANET: Added Member to OutDeMudd#9406.
+ARKANET: Added America to OutDeMudd#9406.
+ARKANET: Added Member to Layth#2146.
+ARKANET: Added Python to Layth#2146.
+ARKANET: Added Script Kiddie to Layth#2146.
+ARKANET: Added Kali Linux to Layth#2146.
+ARKANET: Added Java to Layth#2146.
+ARKANET: Added Europe to Layth#2146.
+ARKANET: Added America to Layth#2146.
+Added Asia to Layth#2146.
+ARKANET: Added Member to Nav2gateWasTaken#6104.
+ARKANET: ERROR: No Statement
+ARKANET: Added Member to m&ms#1370.
+ARKANET: REBOOTING
+ARKANET: Configuration loaded
+ARKANET: Awaiting Action
+ARKANET: DEBUG: role is null
+ARKANET: Added Kali Linux to daemon#3333.
+ARKANET: Added Python to !Apisan_Dev#9999.
+ARKANET: Added Kali Linux to !Apisan_Dev#9999.
+ARKANET: Added Script Kiddie to !Apisan_Dev#9999.
+ARKANET: Added Java to !Apisan_Dev#9999.
+Removed Java from !Apisan_Dev#9999.
+Added Asia to !Apisan_Dev#9999.
+ARKANET: REBOOTING
+[H[2J[H[2JARKANET: Configuration loaded
+ARKANET: Awaiting Action
+ARKANET: Configuration loaded
+ARKANET: Awaiting Action
+ARKANET: REBOOTING
+[H[2JUnclosed connection
+client_connection: Connection<ConnectionKey(host='gateway.discord.gg', port=443, is_ssl=True, ssl=None, proxy=None, proxy_auth=None, proxy_headers_hash=None)>
+ARKANET: Configuration loaded
+ARKANET: Awaiting Action
+Removed Asia from daemon#1000.
+Added Asia to daemon#1000.
+Removed Asia from daemon#1000.
+ARKANET: Added Member to Root_shervin#1379.
+ARKANET: Added Member to Exodus#7023.
+ARKANET: Added Kali Linux to Exodus#7023.
+ARKANET: Added Europe to Exodus#7023.
+ARKANET: Added Member to STUG0TS#7849.
+ARKANET: Added Python to STUG0TS#7849.
+ARKANET: Added Member to Knight#5195.
+ARKANET: Added Member to danteivy#2517.
+ARKANET: Added Member to FENDI#0562.
+ARKANET: Added Member to devilfunds#0001.
+ARKANET: Added Member to Alter#7038.
+ARKANET: Added Member to Da²#6697.
+Removed Member from Da²#6697.
+ARKANET: Added Member to Da²#6697.
+ARKANET: Added Member to ak#9876.
+Removed Python from ak#9876.
+ARKANET: Added Python to ak#9876.
+Removed Script Kiddie from ak#9876.
+ARKANET: Added Member to Pratyaksh#4164.
+ARKANET: Added Member to Vishal Gujjar#7554.
+ARKANET: ERROR: No Statement
+ARKANET: Added Member to Hentai#1247.
+ARKANET: Added Python to Hentai#1247.
+ARKANET: Added Script Kiddie to Hentai#1247.
+Removed Script Kiddie from Hentai#1247.
+ARKANET: Added Kali Linux to Hentai#1247.
+ARKANET: Added Java to Hentai#1247.
+ARKANET: Added Europe to Hentai#1247.
+ARKANET: ERROR: No Statement
+ARKANET: ERROR: No Statement
+ARKANET: ERROR: No Statement
+ARKANET: ERROR: No Statement
+ARKANET: ERROR: No Statement
+ARKANET: ERROR: No Statement
+ARKANET: ERROR: No Statement
+ARKANET: ERROR: No Statement
+ARKANET: Added Member to mrjoker#3389.
+ARKANET: Added Member to UnkindledAsh#5921.
+ARKANET: Added Python to UnkindledAsh#5921.
+[H[2J
