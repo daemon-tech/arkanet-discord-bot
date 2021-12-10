@@ -22,6 +22,7 @@ activity = discord.Activity(name='TCP', type=discord.ActivityType.watching)
 bot = Bot(command_prefix="$", intents=intents, activity=activity)
 client = discord.Client(intents=intents)
 channel_sudo = client.get_channel(856434834900254731)
+channel_terminal = client.get_channel(856434834900254731)
 
 print("ARKANET: Configuration loaded")
 print("ARKANET: Awaiting Action")
@@ -100,10 +101,17 @@ async def on_message(message):
 									 description = "🔍 IP WHOIS | whois [ip]", color=0x00ff00)
 			await channel_sudo.send(embed=embedcmd)
 
-		elif message.content == "su self reboot":
+		elif message.content == "su reboot":
 			print("ARKANET: REBOOTING")
 			await channel_sudo.send(f"ARKANET: REBOOTING")
 			os.system("python3 reboot.py")
+		
+		elif message.content == "ping":
+			print("ARKANET: PONG")
+			await channel_sudo.send(f"{message.author.name}: PONG!")
+		elif message.content == "pong":
+			print("ARKANET: PING")
+			await channel_sudo.send(f"{message.author.name}: PING!")
 
 		elif message.content.startswith('su'):
 			await channel_sudo.send(f"ARKANET: ~ su [arg1] example: help")
@@ -121,7 +129,14 @@ async def on_message(message):
 							if message.channel.id != 855903653016895488:
 								if message.channel.id != 910875392900997140:
 									if message.channel.id != 854829985252900864:
-										await channel_sudo.send(f"ARKANET: {message.author.name}: {message.content}")
+										if message.channel.id != 918490170989363310:
+											if message.content == "ping":
+												print("ARKANET: PONG")
+												await channel_terminal.send(f"{message.author.name}: PONG!")
+											elif message.content == "pong":
+												print("ARKANET: PING")
+												await channel_terminal.send(f"PING!")
+											await channel_sudo.send(f"ARKANET: {message.author.name}: {message.content}")
 
 #on_raw_reaction_add 
 @bot.event
